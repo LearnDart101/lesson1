@@ -3,8 +3,9 @@ void main() {
   /*
 
   Identifiers cannot be keywords.
+  Identifiers cannot contain spaces and special 
   Identifiers can contain alphabets and numbers.
-  Identifiers cannot contain spaces and special characters, except the  underscore (_) and the dollar ($) sign.
+  characters, except the  underscore (_) and the dollar ($) sign.
   Variable names cannot begin with a number.
 
   */
