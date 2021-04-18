@@ -32,6 +32,13 @@ void main() {
     "Quantity is: ${quantity} \n" + "Cost is: ${price}"
   );
 
+  // You can parse a number which originally is a string
+
+  var num1 = '201';
+
+  int total = num.parse(num1) + 10;
+  print(total);
+
   //::: More Google Dart integer fuctions
   /*
   https://www.tutorialspoint.com/dart_programming/dart_programming_numbers.htm

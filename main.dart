@@ -1,66 +1,51 @@
+/*
+  ** In simply way while trying to avoid confusion,
+  * symbols are a way to store the relationship between a human readable string and a string that is optimized to be used by computers.
+  *
+  *
+  * Well imageine you have a class/method,library called "stringFloatManagerInfo" well that name not only is long back is hard ro easly remember
 
-void main() {
+  * So we create a symbol for it
 
-  //Switch statement
-  /*
-    The switch statement evaluates an expression, matches the expression’s value to a case clause and executes the statements associated with that case.
+  Reflection is a mechanism to get metadata of a type at runtime like the number of methods in a class, the number of constructors it has or the number of parameters in a function. 
+  You can even invoke a method of the type which is loaded at runtime.
 
-    Syntax
+  In Dart reflection specific classes are available in the dart:mirrors package. This library works in both web applications and command line applications.
+*/
 
-    switch(variable_expression) { 
-      case constant_expr1: { 
-        // statements; 
-      } 
-      break; 
+import 'dart:core';
+import 'dart:mirrors'; 
+import 'Foo.dart';  
+
+main() { 
+   Symbol lib = new Symbol("foo_lib");   
+   //library name stored as Symbol 
+   
+   Symbol clsToSearch = new Symbol("Foo");  
+   // class name stored as Symbol  
+   
+   if(checkIf_classAvailableInlibrary(lib, clsToSearch))  
+   // searches Foo class in foo_lib library 
+      print("class found.."); 
+}  
+   
+bool checkIf_classAvailableInlibrary(Symbol libraryName, Symbol className) { 
+   MirrorSystem mirrorSystem = currentMirrorSystem(); 
+   LibraryMirror libMirror = mirrorSystem.findLibrary(libraryName); 
       
-      case constant_expr2: { 
-        //statements; 
-      } 
-      break; 
-          
-      default: { 
-        //statements;  
-      }
-      break; 
-    } 
-  */
-
-  /*
-    The value of the variable_expression is tested against all cases in the switch. If the variable matches one of the cases, the corresponding code block is executed. If no case expression matches the value of the variable_expression, the code within the default block is associated.
-
-    The following rules apply to a switch statement −
-
-      1:There can be any number of case statements within a switch.
-      2:The case statements can include only constants. It cannot be a variable or an expression.
-      3:The data type of the variable_expression and the constant expression must match.
-      4:Unless you put a break after each block of code, the execution flows into the next block.
-      5:The case expression must be unique.
-      6:The default block is optional.
-  */
-
-  var grade = "A"; 
-  switch(grade) { 
-    case "A": {  print("Excellent"); } 
-    break; 
-     
-    case "B": {  print("Good"); } 
-    break; 
-     
-    case "C": {  print("Fair"); } 
-    break; 
-     
-    case "D": {  print("Poor"); } 
-    break; 
-     
-    default: { print("Invalid choice"); } 
-    break; 
-  } 
-
-
-  //::: More 
-  /*
-  https://www.tutorialspoint.com/dart_programming/dart_programming_decision_making.htm
-
-  https://www.tutorialspoint.com/dart_programming/dart_programming_switch_case_statement.htm
-  */
+   if (libMirror != null) { 
+      print("Found Library"); 
+      print("checkng...class details.."); 
+      print("No of classes found is : ${libMirror.declarations.length}"); 
+      libMirror.declarations.forEach((s, d) => print(s));  
+         
+      if (libMirror.declarations.containsKey(className)) return true; 
+      return false; 
+   } 
 }
+
+  //::: 
+  /*
+  https://www.tutorialspoint.com/dart_programming/dart_programming_symbol.htm
+  */
+
