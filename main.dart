@@ -1,25 +1,21 @@
 
   /*
-    Library Prefix
+    Dart this Keyword
 
-    If you import two libraries with conflicting identifiers, then you can specify a prefix for one or both libraries. Use the 'as' keyword for specifying the prefix.
+    => The this keyword represents an implicit object pointing to current class object. It refers to the current instance of the class in a method or constructor. 
 
-    Syntax
-      import 'library_uri' as prefix
+    => The this keyword is mainly used to eliminate the ambiguity between class attributes and parameters with the same name. 
+    
+    => When the class attributes and the parameter name are same; this keyword is used to avoid ambiguity by prefixing class attributes with the this keyword.
   */
 
-  import 'prefixloggerlib.dart'; 
-  import 'prefixwebloggerlib.dart' as web;  
-
-  // prefix avoids function name clashes 
   void main(){ 
-    log("hello from loggerlib"); 
-    web.log("hello from webloggerlib"); 
+
   }
 
   //::: More
   /*
-    https://www.tutorialspoint.com/dart_programming/dart_programming_libraries.htm
+    https://www.w3adda.com/dart-tutorial/dart-this-keyword
   */
 
 
