@@ -11,10 +11,13 @@
 
   class Car {  
     // field **
-    String engine;  
+    String? engine;   // DataType? is best when value might be nullable
     
     //Default constructor
-    Car(String showEngine) { 
+    Car(String engine) { 
+      // Note here our constuctor variable os same as global class variable
+      // To separate the two use this.engine for global variable 
+      this.engine = engine;
       print("List of car engines");
     } 
 
@@ -23,8 +26,11 @@
       print("Engine:$engine");
     }
 
-    //Named 2
-    Car.setEnginename(String showEngine){
+    //Named 2 | 
+    // In case parameter can be null and we wish to reference them
+    // By name, use {} in between the variables
+    Car.setEnginename({String? showEngine}){
+      // So we will reference this variable by their name
       this.engine = showEngine;
     }
 
@@ -47,7 +53,7 @@
     Car c1a = new Car.namedConstructor();
     Car c1b = new Car.namedConstructor('E204');
     c.disp(); 
-    Car c3 = new Car.setEnginename('E1002');
+    Car c3 = new Car.setEnginename(showEngine: 'E1012'); //By Variable Name
     c3.disp(); 
 
   }
